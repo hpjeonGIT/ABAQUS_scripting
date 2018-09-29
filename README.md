@@ -8,6 +8,7 @@ Sample tutorial for Abaqus scripting
 ## Running parametric sweep
 - crack length is augmented per rid
 - input_template has initial crack length. As rid number increases, the length is augmented
+- copy static_K1.py as fracture.py
 - python orchestrator.py will start the parametric study, yielding results folder as rid0000, rid0001, rid0002, ...
 - python extractor.py will extract results from existing rid folders, yielding all_results.dat like:
 
