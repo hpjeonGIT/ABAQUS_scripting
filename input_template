@@ -1,0 +1,8 @@
+length= 5.
+height= 2.
+thickness= 1
+density = 1000.
+young = 200.
+poisson = 0.3
+force = 2.0
+crack_length = 0.25
