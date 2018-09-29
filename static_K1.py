@@ -197,6 +197,23 @@ assembly.Set(edges=CrackTipInner, name='CrackTipInner')
 assembly.generateMesh(regions=instance.faces,seedConstraintOverride=ON,
                       meshTechniqueOverride=OFF)
 
+
+# Snpashot
+session.viewports['Viewport: 1'].setValues(displayedObject=assembly)
+session.viewports['Viewport: 1'].assemblyDisplay.setValues(mesh=ON,
+                                                     optimizationTasks=OFF, 
+                                                     geometricRestrictions=OFF, 
+                                                     stopConditions=OFF)
+session.viewports['Viewport: 1'].assemblyDisplay.meshOptions.setValues(meshTechnique=ON)
+session.viewports['Viewport: 1'].view.setValues(nearPlane=30.,
+                                                farPlane=31,
+                                                width=L*2,
+                                                height=L*2,
+                                                viewOffsetX=0,
+                                                viewOffsetY=0)
+session.printToFile(fileName='mesh_01.png', format=PNG, canvasObjects=(
+    session.viewports['Viewport: 1'], ))
+
 # Save and submit
 mdb.saveAs('Job-'+model_name)
 job = mdb.Job(model=model_name, name='Job-'+model_name, numCpus=1)
