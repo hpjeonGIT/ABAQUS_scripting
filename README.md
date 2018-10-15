@@ -19,3 +19,21 @@ Sample tutorial for Abaqus scripting
 1, 5.0000e-01, 1.5843e+00, -4.0252e-01, 1.2163e-02, -3.7799e-01
 
 2, 7.5000e-01, 1.9377e+00, -6.7458e-01, 1.9163e-02, -1.6483e-01
+
+
+## Some tip
+## To find free surfaces in the zone of a crack
+### define crack seam first
+indices_seam_edges = []
+for seg in seam_edges:
+    indices_seam_edges.append(seg.index)
+print("Edge numbers of crack seam = ", indices_seam_edges)
+### Then find all edges near the crack seam
+initC = instance.vertices.findAt(((ix,iy,0),))
+neighbors = initC[0].getEdges()
+### compare and search free surfaces
+for a in neighbors:
+    if not (a in indices_seam_edges): # exclude the edges of the crack seam
+        edges += instance.edges[a:a+1]
+region = assembly.Set(edges=edges, name='freesurfaces')
+
