@@ -1,0 +1,7 @@
+length= 100.
+height= 20.
+thickness= 1.0
+material_name = glass
+young = 70.e3
+poisson = 0.2
+force = 1000.0
